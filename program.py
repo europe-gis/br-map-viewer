@@ -18,9 +18,11 @@ if __name__ == "__main__":
 
     if args.load_type == 'from_raster':
         rst_list = args.rst_lst.split(";")
+        print(rst_list)
         for raster_file in rst_list:
             rst_fn = args.input_path + raster_file
             pic_hash = map_viewer.get_base64_image(rst_fn, 1, False)
+            print(pic_hash)
             inner_dict = {
                 'type': 'web-app',
                 'storage': 'inline',

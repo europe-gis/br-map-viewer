@@ -38,4 +38,5 @@ def get_base64_image(input_fn, band = 1, from_logits = True):
     pic_hash = base64.b64encode(pic_IObytes.read())
     # We need to remove the quotation and b character
     pic_hash = pic_hash[2:-1]
+    pyplot.close()
     return pic_hash
