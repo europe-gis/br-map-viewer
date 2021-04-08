@@ -1,0 +1,33 @@
+stages:
+  - build
+
+image: harbor.tilyes.eu/dockerhub_proxy_cache/library/docker:19.03.13
+
+variables:
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_TLS_VERIFY: 1
+  DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+
+services:
+  - docker:19.03.13-dind
+
+before_script:    
+  - |
+    for i in $(seq 1 90)
+    do
+        docker info && break
+        echo "Waiting for docker to start"
+        sleep 5s
+    done
+  - mkdir /root/.docker
+  - echo $DOCKER_AUTH_CONFIG > $HOME/.docker/config.json
+  - docker info
+
+build-image:
+  stage: build
+  image: docker:19.03.12
+  script:
+    - docker pull harbor.tilyes.eu/eugis/br-map-viewer:latest || true
+    - docker build . -t harbor.tilyes.eu/eugis/br-map-viewer:latest
+    - docker push harbor.tilyes.eu/eugis/br-map-viewer:latest
