@@ -17,9 +17,9 @@ if __name__ == "__main__":
     output_list = []
 
     if args.load_type == 'from_raster':
-        rst_list = args.rst_lst.split("/")
+        rst_list = args.rst_lst.split(";")
         for raster_file in rst_list:
-            rst_fn = args.input_path + '/' + raster_file
+            rst_fn = args.input_path + raster_file
             pic_hash = map_viewer.get_base64_image(rst_fn, 1, False)
             inner_dict = {
                 'type': 'web-app',
