@@ -29,5 +29,8 @@ build-image:
   image: docker:19.03.12
   script:
     - docker pull harbor.tilyes.eu/eugis/br-map-viewer:latest || true
-    - docker build . -t harbor.tilyes.eu/eugis/br-map-viewer:latest
+    - |
+      docker build . \
+        -t harbor.tilyes.eu/eugis/br-map-viewer:latest \
+        --cache-from harbor.tilyes.eu/eugis/br-map-viewer:latest
     - docker push harbor.tilyes.eu/eugis/br-map-viewer:latest
