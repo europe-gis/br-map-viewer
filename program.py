@@ -24,7 +24,7 @@ if __name__ == "__main__":
             inner_dict = {
                 'type': 'web-app',
                 'storage': 'inline',
-                'source': f'<img src="data:image/png;base64,{pic_hash}" />'
+                'source': f'<img src="data:image/png;base64,{pic_hash}" width="100%" />'
             }
             output_list.append(inner_dict)
 
