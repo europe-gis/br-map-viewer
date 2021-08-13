@@ -4,4 +4,6 @@ WORKDIR /tmp
 
 WORKDIR /app
 
+RUN pip3 install kubernetes
+
 COPY . /app
