@@ -19,16 +19,11 @@ def get_base64_image_from_vrt(src_path, output_type, experiment_type = None, xy_
     else:
         full_path = src_path
 
-    print(full_path)
     file_list = []
     for r, d, f in os.walk(full_path):
         for file in f:
-            print(file)
-            print(file[-4:] == '.tif')
-            print(f'output_{output_type}' in file)
             if file[-4:] == '.tif' and f'output_{output_type}' in file:
                 file_list.append(os.path.join(r, file))
-    print(file_list)
 
 
     if output_type in ['prob', 'detailed']: 
