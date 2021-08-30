@@ -28,7 +28,7 @@ if __name__ == "__main__":
             }
             output_list.append(inner_dict)
     elif args.load_type == 'from_vrt':
-        rst_list = args.rst_lst.split(";").split(",")
+        rst_list = args.rst_lst.split(",")
         for output_type in rst_list:
             pic_hash = vrt_viewer.get_base64_image_from_vrt(args.input_path, output_type, xy_resolution = args.resolution)
             inner_dict = {
