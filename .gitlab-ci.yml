@@ -21,7 +21,8 @@ before_script:
         sleep 5s
     done
   - mkdir /root/.docker
-  - echo $DOCKER_AUTH_CONFIG > $HOME/.docker/config.json
+  # - echo $DOCKER_AUTH_CONFIG > $HOME/.docker/config.json
+  - docker login harbor.tilyes.eu -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   - docker info
 
 build-image:
